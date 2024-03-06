@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="52748da4-2cb0-412b-98bb-a2d20f74f77f" name="test-bot-sftp">
+        <fileTransfer rootFolder="/home/hitecksftp" accessType="SFTP" host="botapi.hiteck.ir" port="8585" sshConfigId="1db94f37-90a1-4fe8-8f06-56ece9c9d6e1" sshConfig="test-bot-sftp" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

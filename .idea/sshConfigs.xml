@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="botapi.hiteck.ir" id="1db94f37-90a1-4fe8-8f06-56ece9c9d6e1" keyPath="C:\Users\Mhdi\.ssh\id_rsa-sftp-hiteck" port="8585" customName="test-bot-sftp" nameFormat="CUSTOM" username="hitecksftp" useOpenSSHConfig="true">
+        <option name="customName" value="test-bot-sftp" />
+      </sshConfig>
+    </configs>
+  </component>
+</project>
