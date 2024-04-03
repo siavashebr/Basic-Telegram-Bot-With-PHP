@@ -9,9 +9,9 @@ use PDOException;
 require_once __DIR__ . '/generalFunctions.php';
 
 define("host", 'localhost');
-define("dbName", 'testdb');
-define("dbUser", 'testdb');
-define("dbPass", 'NWslcmHKrlVaTKBY8x2g');
+define("dbName", 'dbName');
+define("dbUser", 'dbUser');
+define("dbPass", 'dbPass');
 try {
     define("db", new PDO('mysql:host='.host.';dbname='.dbName, dbUser, dbPass));
     db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
