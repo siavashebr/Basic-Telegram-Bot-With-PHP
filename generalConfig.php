@@ -5,7 +5,7 @@ use bot\telegram\Telegram;
 
 require_once __DIR__ . '/Telegram.php';
 
-define('TOKEN','6800031006:AAEJroejXqCVzulAZlCVuksfG7CcVNQSouc');
+define('TOKEN','TOKEN_HERE');
 
 
 //---------------- Connect Database -----------------//
