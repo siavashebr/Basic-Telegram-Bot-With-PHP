@@ -23,7 +23,7 @@ class generalFunctions
 
     public function addStep(): void
     {
-        $this->generalDBFunctions->insertToDB("step", ["telegram_id", "telegram_username", "step"], [chatId, telegramUserName, "home"]);
+        $this->generalDBFunctions->insertToDB("step", ["telegram_id", "telegram_username","telegram_full_name","step"], [chatId, telegramUserName,telegramFullName, "home"]);
     }
 
     public function setStep(string $step, string $chatId = chatId): void
@@ -35,7 +35,10 @@ class generalFunctions
     {
         return $this->generalDBFunctions->selectFromDB("step", ["*"], "telegram_id='" . chatId . "'")[0]['step'];
     }
-
+    public function getIdFromFullName($fullName)
+    {
+        return $this->generalDBFunctions->selectFromDB("step", ["telegram_id"], "telegram_full_name='" . $fullName . "'")[0]['telegram_id'];
+    }
     public function isAdmin(): bool
     {
         $admins = $this->generalDBFunctions->selectFromDB("admins", ["telegram_id"]);
@@ -78,7 +81,27 @@ class generalFunctions
         $this->bot->downloadFile($file['result']['file_path'], $file['result']['file_path']);
         return ['link' => $file['result']['file_path'], 'type' => $fileType];
     }
+    public function broadcast($message,$parsMode=NULL,$keyboard=NULL): void
+    {
+        $this->addToReadyAll();
+        $userIds = $this->generalDBFunctions->selectFromDB("ready", ["id"]);
+        $x = 0;
+        $userIdsCount = count($userIds);
+        $this->sendMessage("شروع ارسال به ".$userIdsCount . " نفر", id: ADMIN_ID);
 
+        for ($i = 0; $i < $userIdsCount; $i++) {
+            $userId = $userIds[$i]['id'];
+            $response = $this->sendMessage(text: $message, id: $userId);
+            if (!$response["ok"]) {
+                $x++;
+            }
+            sleep(0.5);
+        }
+        $this->sendMessage("موفق: " . count($userIds) - $x);
+        $this->sendMessage("نا موفق: $x");
+        $this->sendMessage("ارسال همگانی تمام شد", NULL);
+
+    }
     public function detectType()
     {
         $type = updateType;
@@ -207,6 +230,10 @@ class generalFunctions
                 ]
             );
         }
+    }
+    public function sendToAdmin($msgId): void
+    {
+        $this->forwardMessage(toChatId: ADMIN_ID,messageId: $msgId);
     }
 
     public function forwardMessage($toChatId, $messageId = messageId, $fromChatId = chatId)
