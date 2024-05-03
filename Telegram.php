@@ -1206,7 +1206,56 @@ class Telegram
     {
         return $this->endpoint('kickChatMember', $content);
     }
+    /**
+     * Use this method to create an additional invite link for a chat. The bot must be an administrator in the chat for this to work and must have the appropriate administrator rights. The link can be revoked using the method revokeChatInviteLink. Returns the new invite link as ChatInviteLink object.
+     * <table class="table">
+     * <thead>
+     * <tr>
+     * <th>Parameter</th>
+     * <th>Type</th>
+     * <th>Required</th>
+     * <th>Description</th>
+     * </tr>
+     * </thead>
+     * <tbody>
+     * <tr>
+     * <td>chat_id</td>
+     * <td>Integer or String</td>
+     * <td>Yes</td>
+     * <td>Unique identifier for the target chat or username of the target channel (in the format <code>@channelusername</code>)</td>
+     * </tr>
+     * <tr>
+     * <td>name</td>
+     * <td>String</td>
+     * <td>Optional</td>
+     * <td>Invite link name; 0-32 characters</td>
+     * </tr>
+     * <tr>
+     * <td>expire_date</td>
+     * <td>Integer</td>
+     * <td>Optional</td>
+     * <td>Point in time (Unix timestamp) when the link will expire</td>
+     * </tr>
+     * <tr>
+     * <td>member_limit</td>
+     * <td>Integer</td>
+     * <td>Optional</td>
+     * <td>The maximum number of users that can be members of the chat simultaneously after joining the chat via this invite link; 1-99999</td>
+     * </tr>
+     * <tr>
+     * <td>creates_join_request</td>
+     * <td>Boolean</td>
+     * <td>Optional</td>
+     * <td><em>True</em>, if users joining the chat via the link need to be approved by chat administrators. If <em>True</em>, <em>member_limit</em> can't be specified</td>
+     * </tr>
+     * </tbody>
+     * </table>
+     */
 
+    public function createChatInviteLink(array $content)
+    {
+        return $this->endpoint('createChatInviteLink', $content);
+    }
     /// Leave Chat
 
     /**
