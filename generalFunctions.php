@@ -246,4 +246,21 @@ class generalFunctions
             ]
         );
     }
+    public function isBlackList($userId): bool
+    {
+        $data = $this->generalDBFunctions->selectFromDB("black_list", ["telegram_id"], "telegram_id='$userId'");
+        if(empty($data))
+        {
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
+        }
+    }
+    public function addBlackList($userId)
+    {
+        $this->generalDBFunctions->insertToDB("blacklist",['telegram_id','telegram_username'],[$userId,telegramUserName]);
+    }
+
 }
