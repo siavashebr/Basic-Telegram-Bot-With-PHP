@@ -14,7 +14,10 @@ define('bot',new Telegram(TOKEN));
 define("chatId", bot->ChatID() ?? '190274893');
 define("userText", bot->Text() ?? '');
 define("updateType", bot->getUpdateType() ?? '');
-define("telegramUserName", bot->username() ?? 'not set!!');
+define("telegramUserName", bot->username() ?? 'ندارد!!');
+define("telegramFirstName", bot->FirstName() ?? 'ندارد!!');
+define("telegramLastName", bot->LastName() ?? 'ندارد!!');
+define("telegramFullName", telegramFirstName." ".telegramLastName);
 define("callback_data", bot->Callback_Data() ?? 'not callback');
 define("callback_id", bot->Callback_ID() ?? 'not id');
 define("forwardFromId", bot->FromID() ?? 'not set');
@@ -24,6 +27,7 @@ define("data",bot->getData() ?? '');
 define("replyToMessageID",bot->ReplyToMessageID() ?? '');
 define("replyToMessageFromUserID",bot->ReplyToMessageFromUserID() ?? '');
 define("replyToMessageFromUserIDMessage",bot->ReplyToMessageFromUserIDMessage() ?? '');
+
 
 define("photoId", bot->photoid() ?? '');
 define("videoId", bot->videoid() ?? '');
